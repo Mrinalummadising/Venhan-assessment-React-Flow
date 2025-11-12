@@ -264,7 +264,3 @@ A sample metadata file (`sample-metadata.json`) is included in the project root,
 ## License
 
 This project is open source and available for use.
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
