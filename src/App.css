@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure React Flow takes full space */
+.react-flow {
+  width: 100%;
+  height: 100%;
+}
+
+/* Dark theme styles for React Flow nodes and edges */
+.dark-theme .react-flow__node {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #424242;
+}
+
+.dark-theme .react-flow__node.selected {
+  border-color: #646cff;
+}
+
+.dark-theme .react-flow__edge {
+  stroke: #646cff;
+}
+
+.dark-theme .react-flow__edge.selected {
+  stroke: #646cff;
+}
+
+.dark-theme .react-flow__edge-text {
+  fill: #ffffff;
+  background-color: #2a2a2a;
+}
+
+.dark-theme .react-flow__handle {
+  background-color: #646cff;
+  border: 2px solid #2a2a2a;
+}
+
+/* Animated edge styles - React Flow handles this natively, but we add custom styling */
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+/* Enhanced animation for animated edges */
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+.react-flow__edge.animated .react-flow__edge-text {
+  font-weight: 600;
+}
+
+@keyframes dashdraw {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+/* Ensure animated edges are visible in both themes */
+.light-theme .react-flow__edge.animated .react-flow__edge-path {
+  stroke: #646cff;
+}
+
+.dark-theme .react-flow__edge.animated .react-flow__edge-path {
+  stroke: #646cff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .react-flow__panel {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+  }
+  
+  .react-flow__panel button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}

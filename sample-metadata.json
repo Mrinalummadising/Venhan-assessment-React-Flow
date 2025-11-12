@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "input",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "data": {
+        "label": "Start Process"
+      }
+    },
+    {
+      "id": "process1",
+      "type": "default",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "data": {
+        "label": "Data Validation"
+      }
+    },
+    {
+      "id": "process2",
+      "type": "default",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "data": {
+        "label": "Data Processing"
+      }
+    },
+    {
+      "id": "decision",
+      "type": "default",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "data": {
+        "label": "Quality Check"
+      }
+    },
+    {
+      "id": "success",
+      "type": "output",
+      "position": {
+        "x": 700,
+        "y": 250
+      },
+      "data": {
+        "label": "Success"
+      }
+    },
+    {
+      "id": "retry",
+      "type": "default",
+      "position": {
+        "x": 500,
+        "y": 250
+      },
+      "data": {
+        "label": "Retry Process"
+      }
+    },
+    {
+      "id": "end",
+      "type": "output",
+      "position": {
+        "x": 900,
+        "y": 100
+      },
+      "data": {
+        "label": "End Process"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-start-process1",
+      "source": "start",
+      "target": "process1",
+      "type": "smoothstep",
+      "label": "Begin",
+      "animated": false
+    },
+    {
+      "id": "e-process1-process2",
+      "source": "process1",
+      "target": "process2",
+      "type": "smoothstep",
+      "label": "Validated",
+      "animated": false
+    },
+    {
+      "id": "e-process2-decision",
+      "source": "process2",
+      "target": "decision",
+      "type": "smoothstep",
+      "label": "Processed",
+      "animated": false
+    },
+    {
+      "id": "e-decision-end",
+      "source": "decision",
+      "target": "end",
+      "type": "smoothstep",
+      "label": "Pass",
+      "animated": true
+    },
+    {
+      "id": "e-decision-success",
+      "source": "decision",
+      "target": "success",
+      "type": "smoothstep",
+      "label": "Fail",
+      "animated": false
+    },
+    {
+      "id": "e-success-retry",
+      "source": "success",
+      "target": "retry",
+      "type": "smoothstep",
+      "label": "Retry",
+      "animated": false
+    },
+    {
+      "id": "e-retry-process2",
+      "source": "retry",
+      "target": "process2",
+      "type": "smoothstep",
+      "label": "Re-process",
+      "animated": false
+    }
+  ]
+}
+

@@ -1,0 +1,485 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Dark theme for sidebar */
+.sidebar.dark-theme {
+  background-color: #1a1a1a;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .sidebar-header {
+  background-color: #2a2a2a;
+  border-bottom-color: #424242;
+}
+
+.sidebar.dark-theme .sidebar-header h2 {
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .sidebar-tabs {
+  background-color: #2a2a2a;
+  border-bottom-color: #424242;
+}
+
+.sidebar.dark-theme .sidebar-tabs button {
+  color: #cccccc;
+}
+
+.sidebar.dark-theme .sidebar-tabs button:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .sidebar-tabs button.active {
+  color: #646cff;
+  border-bottom-color: #646cff;
+}
+
+.sidebar.dark-theme .form-group label {
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .form-group input,
+.sidebar.dark-theme .form-group select,
+.sidebar.dark-theme .form-group textarea {
+  background-color: #2a2a2a;
+  border-color: #424242;
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .form-group input:focus,
+.sidebar.dark-theme .form-group select:focus,
+.sidebar.dark-theme .form-group textarea:focus {
+  border-color: #646cff;
+}
+
+.sidebar.dark-theme .node-form h3,
+.sidebar.dark-theme .edge-form h3,
+.sidebar.dark-theme .metadata-manager h3 {
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .selected-item {
+  background-color: #2a2a2a;
+  border-color: #424242;
+}
+
+.sidebar.dark-theme .selected-item h3 {
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .selected-item p {
+  color: #cccccc;
+}
+
+.sidebar.dark-theme .metadata-info {
+  background-color: #2a2a2a;
+  border-color: #424242;
+}
+
+.sidebar.dark-theme .metadata-info p {
+  color: #cccccc;
+}
+
+.sidebar.dark-theme .metadata-info strong {
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .json-editor textarea {
+  background-color: #1a1a1a;
+  border-color: #424242;
+  color: #ffffff;
+}
+
+.sidebar.dark-theme .error-message {
+  background-color: #4a1a1a;
+  color: #ff6666;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+}
+
+.sidebar-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+  flex: 1;
+}
+
+.theme-toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(100, 108, 255, 0.2);
+}
+
+.theme-toggle-button:hover {
+  background-color: #535bf2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(100, 108, 255, 0.3);
+}
+
+.theme-toggle-button:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  font-size: 1.1rem;
+  display: inline-block;
+}
+
+.theme-label {
+  font-size: 0.85rem;
+}
+
+/* Dark theme for theme toggle button */
+.sidebar.dark-theme .theme-toggle-button {
+  background-color: #646cff;
+  color: white;
+}
+
+.sidebar.dark-theme .theme-toggle-button:hover {
+  background-color: #535bf2;
+}
+
+.sidebar-tabs {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+.sidebar-tabs button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #666;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.sidebar-tabs button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.sidebar-tabs button.active {
+  color: #646cff;
+  border-bottom-color: #646cff;
+  font-weight: 600;
+}
+
+.sidebar-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.node-form,
+.edge-form {
+  margin-bottom: 24px;
+}
+
+.node-form h3,
+.edge-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #535bf2;
+}
+
+.selected-item {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.selected-item h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.selected-item p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.delete-button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 12px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
+
+.metadata-manager h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.metadata-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.action-button {
+  padding: 10px;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #535bf2;
+}
+
+.file-upload {
+  margin-bottom: 20px;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #646cff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.upload-label:hover {
+  background-color: #535bf2;
+}
+
+.json-editor {
+  margin-bottom: 20px;
+}
+
+.json-editor label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.json-editor textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  resize: vertical;
+  min-height: 200px;
+}
+
+.error-message {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.metadata-info {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.metadata-info p {
+  margin: 4px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.metadata-info strong {
+  color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    max-width: 100%;
+    transform: translateX(100%);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .sidebar-tabs button {
+    min-width: 33.33%;
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+  
+  .sidebar-content {
+    padding: 16px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-header {
+    padding: 16px;
+  }
+  
+  .sidebar-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .sidebar-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .theme-toggle-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .sidebar-content {
+    padding: 12px;
+  }
+  
+  .node-form h3,
+  .edge-form h3,
+  .metadata-manager h3 {
+    font-size: 1rem;
+  }
+}
+
